@@ -24,11 +24,10 @@ final List<Widget> tabs=[
   Widget build(BuildContext context) {
     return  Scaffold(
       body: tabs[index],
-      bottomNavigationBar: const BottomAppBar(child: Row(
-        children: [
-          
-        ],
-      ),)),
-    )
+      bottomNavigationBar: BottomAppBar(child: Row(children: [
+        IconButton(onPressed: (){}, icon: const Icon(Icons.abc))
+
+      ],),),
+    );
   }
 }
