@@ -70,7 +70,7 @@ class _MyWidgetState extends State<MyWidget> {
                     : commentData.isEmpty
                         ? const Text("No data")
                         : ListView.builder(
-                          physics: const BouncingScrollPhysics() ,
+                            physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: commentData.length,
                             itemBuilder: ((context, index) {

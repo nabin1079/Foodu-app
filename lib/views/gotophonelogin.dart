@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ecommerce/resource/components/button@widgets.dart';
 import 'package:ecommerce/resource/components/textformfield@widgets.dart';
 import 'package:ecommerce/resource/components/util.dart';
+import 'package:ecommerce/resource/services/local_storage/auth_storage.dart';
 import 'package:ecommerce/views/navbar/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
 
 Future<void> userLogin()async{
 try{
-SharedPreferences prefs = await SharedPreferences.getInstance();
+
 
  Map<String, String> requestHeaders = {
         'Accept': 'application/json',
@@ -62,12 +63,16 @@ headers : requestHeaders
         var token = jsonDecode(response.body)["api_token"];
         // print(token);
 
-        prefs.setString("token", token.toString());
+        // prefs.setString("token", token.toString());
 
 var data = jsonDecode(response.body)["data"];
-prefs.setString("userinfo", data.toString());
 
-prefs.setBool("islogin", true);
+
+Userauth.authstorage(token, data);
+
+// prefs.setString("userinfo", data.toString());
+
+// prefs.setBool("islogin", true);
 
       // print(response.body);
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -83,20 +88,7 @@ prefs.setBool("islogin", true);
 catch(error){
   print(error);
 }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {

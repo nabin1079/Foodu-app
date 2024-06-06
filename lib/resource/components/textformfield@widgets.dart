@@ -24,6 +24,8 @@ keyboardType: keyboardType,
 obscureText: obscureText,
 
 decoration:  InputDecoration(
+  isCollapsed: true,
+  contentPadding: const EdgeInsets.all(9),
                           focusedBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.green,

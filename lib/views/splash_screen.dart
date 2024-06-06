@@ -1,6 +1,6 @@
-
-
+import 'package:ecommerce/resource/services/local_storage/session_manage.dart';
 import 'package:ecommerce/views/first_screen.dart';
+import 'package:ecommerce/views/navbar/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,24 +13,29 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  void route() async {
+    bool status = await SessionManage.loginCheck();
 
-void route(){
-  
-  Future.delayed(const Duration(seconds: 2),(){
-Navigator.push(context, MaterialPageRoute(builder: (context){
+    if (status) {
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const HomePage();
+        }));
+      });
+    }else{
+      Navigator.push(context, MaterialPageRoute(builder: (context){
 
 return const Firstscreen();
 }));
-  });
-}
+    }
+  }
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     route();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +49,15 @@ return const Firstscreen();
             image: AssetImage("assets/logo.png"),
             height: 80,
           ),
-         SizedBox(width: 15,),
           SizedBox(
-            height:40,
+            width: 15,
+          ),
+          SizedBox(
+            height: 40,
             child: Text(
-              
               "FOODU",
               style: TextStyle(
-                fontSize:30,
-              
+                fontSize: 30,
                 fontWeight: FontWeight.w800,
               ),
             ),
