@@ -5,6 +5,7 @@ import 'package:ecommerce/views/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -15,15 +16,24 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+TextEditingController phoneController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    phoneController.dispose();
+    passwordController.dispose();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(Icons.arrow_back)),
+       
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -122,7 +132,7 @@ class _LoginscreenState extends State<Loginscreen> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (contex) {
-                    return const ProductScreenApi();
+                    return const Scaffold();
                   }));
                 },
                 child: Card(

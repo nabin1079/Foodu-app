@@ -23,26 +23,31 @@ controller: controller,
 keyboardType: keyboardType,
 obscureText: obscureText,
 
-decoration: InputDecoration(
-  prefix: Icon(icon),
-   focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.green,
-                                  width: 2,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 136, 133, 133),
-                                    width: 2),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
-                                    suffix: obscureText ? const Icon(Icons.remove_red_eye) : null,
-                                    hintText: hintText,
-
-),
-
+decoration:  InputDecoration(
+  isCollapsed: true,
+  contentPadding: const EdgeInsets.all(9),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.green,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(15))),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 92, 87, 87), width: 2),
+                              borderRadius: BorderRadius.all(Radius.circular(15))),
+                          prefixIcon: Icon(icon),
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                          ),
+                          hintText: hintText,
+                         
+)
     );
+    
+    
+    
+    
+    
   }
 }
